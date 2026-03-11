@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Text Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="brand">
+        <span class="logo">🧠</span>
+        <div>
+            <h1>AI Text Summarizer</h1>
+            <p>Adaptive TF-IDF Document Intelligence</p>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="workspace">
+
+    <!-- INPUT CARD -->
+    <div class="card input-card">
+        <h2>Input Document</h2>
+        <p class="hint">Paste text or upload a .txt document</p>
+
+        <form method="POST" enctype="multipart/form-data">
+            <textarea name="text" placeholder="Enter or paste your document here..."></textarea>
+
+            <div class="controls">
+                <input type="file" name="file" accept=".txt">
+
+                <select name="mode">
+                    <option value="short">Concise</option>
+                    <option value="medium" selected>Balanced</option>
+                    <option value="detailed">Detailed</option>
+                </select>
+
+                <button type="submit">Generate Summary</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- OUTPUT CARD -->
+    <div class="card output-card">
+        <h2>Generated Summary</h2>
+
+        {% if summary %}
+            <div class="summary-box">
+                {{ summary }}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                The summarized output will appear here.
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    © 2026  NLP Summarizer 
+</footer>
+
+</body>
+</html>
